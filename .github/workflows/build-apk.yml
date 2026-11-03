@@ -29,12 +29,15 @@ jobs:
       - name: Build APK directly from project files
         run: gradle --no-daemon assembleDebug
 
+      - name: Rename APK
+        run: cp app/build/outputs/apk/debug/app-debug.apk Kanun-Ogreniyorum.apk
+
       - name: Publish direct APK download
         uses: softprops/action-gh-release@v2
         with:
           tag_name: latest-apk
           name: Kanun Öğreniyorum - Son APK
-          body: Otomatik oluşturulmuş Android APK. İndirmek için Kanun-Ogreniyorum-debug.apk dosyasını seçin.
-          files: app/build/outputs/apk/debug/app-debug.apk
+          body: Otomatik oluşturulmuş Android APK. İndirmek için Kanun-Ogreniyorum.apk dosyasını seçin.
+          files: Kanun-Ogreniyorum.apk
           overwrite_files: true
           make_latest: true
