@@ -15,8 +15,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Extract Android project
-        run: unzip -o KanunOgreniyorum_Android_Proje.zip -d .
+      - name: Recover and extract Android project archive
+        run: |
+          zip -FF KanunOgreniyorum_Android_Proje.zip --out repaired-project.zip
+          unzip -o repaired-project.zip -d .
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
